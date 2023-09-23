@@ -10,8 +10,7 @@
      productov.`precioUnitario` AS productov_precioUnitario,
      productov.`cantidadProducto` AS productov_cantidadProducto,
      productov.`fechaVencimiento` AS productov_fechaVencimiento,
-     productov.`Total` AS productov_Total,
-     sum(productov.`Total`)
+     productov.`Total` AS productov_Total
 FROM
      `productov` productov]]>
 	</queryString>
@@ -25,63 +24,79 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="64" splitType="Stretch"/>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="0" width="137" height="54" uuid="e0f383d3-0737-408b-a699-75e4bb05f822"/>
+				<textElement>
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Factura]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="108" height="64" uuid="9173a118-a767-4a79-987d-c10b6e430dea"/>
+				<imageExpression><![CDATA["C:\\Users\\omarm\\Downloads\\descarga (4).jpeg"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="421" y="18" width="100" height="20" uuid="3b1adb20-23a9-4502-88c9-b78d7dc02c9b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="35" splitType="Stretch">
+		<band height="36" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="2" width="48" height="20" uuid="3f4bf599-b592-4859-8165-451c9704c7ae"/>
-				<text><![CDATA[Codigo]]></text>
+				<reportElement x="0" y="0" width="73" height="20" uuid="ec15dbaf-d9d7-4c8d-b9e9-3ffd7c2b9a07"/>
+				<text><![CDATA[Codgio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="61" y="2" width="100" height="20" uuid="76ae6be4-b6f3-44ef-a1ea-98fcc17409aa"/>
+				<reportElement x="92" y="0" width="100" height="20" uuid="41838d96-ef49-420f-ac82-d771e0e790d4"/>
 				<text><![CDATA[Nombre]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="178" y="2" width="73" height="20" uuid="9e6b1871-433b-40b1-9c38-62d9d31f99fb"/>
+				<reportElement x="210" y="0" width="69" height="20" uuid="f7af3aa6-6063-404f-9ab7-94050e353fa2"/>
 				<text><![CDATA[Precio]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="265" y="2" width="62" height="20" uuid="4391515b-d1d8-4cd9-b5fd-69000e20dcb4"/>
+				<reportElement x="294" y="0" width="72" height="20" uuid="bebf7e6c-4d4c-4466-b97d-54483d380ce4"/>
 				<text><![CDATA[Cantidad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="340" y="2" width="87" height="20" uuid="92effabf-8116-480d-aa11-30c176a8d54b"/>
+				<reportElement x="379" y="0" width="87" height="20" uuid="8eddd4e0-5e88-435b-a506-28a77e8ae24a"/>
 				<text><![CDATA[Vencimiento]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="441" y="2" width="100" height="20" uuid="9724f068-645c-4292-9b02-977407a9758e"/>
+				<reportElement x="477" y="0" width="78" height="20" uuid="99f9e7e6-ba80-4ff5-87f0-71cdc034e3eb"/>
 				<text><![CDATA[Total]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="30" splitType="Stretch">
+		<band height="34" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="48" height="20" uuid="b52457a7-f68c-498a-981b-87ce33ea017e"/>
+				<reportElement x="0" y="0" width="73" height="20" uuid="b8fa0b7f-c609-4a2d-a0c5-2a3de3d5a10f"/>
 				<textFieldExpression><![CDATA[$F{productov_codigoProducto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="61" y="0" width="100" height="20" uuid="57a6ebfd-1f5d-4adb-9f55-5ffbb54c0583"/>
+				<reportElement x="92" y="0" width="100" height="20" uuid="6c50bed3-78a5-4f83-b2e5-be19356e51b7"/>
 				<textFieldExpression><![CDATA[$F{productov_nombreProducto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="178" y="0" width="73" height="20" uuid="5749019d-1f3b-4076-9c66-41f055d73e31"/>
+				<reportElement x="210" y="0" width="69" height="20" uuid="98b1b8e8-d892-4440-8697-b325f6c9c7ea"/>
 				<textFieldExpression><![CDATA[$F{productov_precioUnitario}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="265" y="0" width="62" height="20" uuid="8715ccff-2aa5-4e0a-b1b7-8c3a8b360f85"/>
+				<reportElement x="294" y="0" width="72" height="20" uuid="ea1fc125-f9f3-45ef-8ed2-4dc774992d50"/>
 				<textFieldExpression><![CDATA[$F{productov_cantidadProducto}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="340" y="0" width="87" height="20" uuid="390c09ef-472f-44f0-b7f8-b5e581964b4f"/>
+				<reportElement x="379" y="0" width="87" height="20" uuid="6daffb60-12ad-4bab-b302-4ab8c2e813b3"/>
 				<textFieldExpression><![CDATA[$F{productov_fechaVencimiento}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="441" y="0" width="100" height="20" uuid="2fc5d07a-cfb3-49a8-a4e7-d04b6730f8e3"/>
+				<reportElement x="477" y="0" width="78" height="20" uuid="b48d6c07-0d99-4958-9d10-d8a49271804f"/>
 				<textFieldExpression><![CDATA[$F{productov_Total}]]></textFieldExpression>
 			</textField>
 		</band>
