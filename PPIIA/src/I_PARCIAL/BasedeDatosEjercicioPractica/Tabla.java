@@ -5,6 +5,7 @@
  */
 package I_PARCIAL.BasedeDatosEjercicioPractica;
 
+import I_PARCIAL.BaseDeDatos.Conexion2;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -15,12 +16,11 @@ import javax.swing.table.DefaultTableModel;
  * @author omarm
  */
 public class Tabla extends javax.swing.JFrame {
-    Conexion conx = new Conexion();
+    Conexion2 con1= new Conexion2();
     Connection conet;
     DefaultTableModel modelo;
     Statement st;
     ResultSet rs;
-    
     public Tabla() {
         initComponents();
         setLocationRelativeTo(null);
@@ -38,7 +38,7 @@ public class Tabla extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla = new javax.swing.JTable();
+        Tabla2 = new javax.swing.JTable();
 
         jPanel1.setName("Base de Datos"); // NOI18N
 
@@ -57,15 +57,15 @@ public class Tabla extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Tabla.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Edad"
+                "Nombre", "Edad", "Title 3", "Title 4", "Title 5", "Title 6"
             }
         ));
-        jScrollPane1.setViewportView(Tabla);
+        jScrollPane1.setViewportView(Tabla2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,26 +122,30 @@ public class Tabla extends javax.swing.JFrame {
     }
 
      void consultar(){
-        String sql = "select * from tblejercicio";
+        String sql = "select * from productov";
         try{
-            conet = conx.getConnection();
+            conet = con1.getConnection();
             st = conet.createStatement();
             rs = st.executeQuery(sql);
-            Object[] tblejercicio = new Object[2];
-            modelo = (DefaultTableModel) Tabla.getModel();
+            Object[] productov = new Object[6];
+            modelo = (DefaultTableModel) Tabla2.getModel();
             while(rs.next()){
-                tblejercicio[0] = rs.getString("CLNOMBRE");
-                tblejercicio[1] = rs.getString("CLEDAD");
+                productov[0] = rs.getString("codigoProducto");
+                productov[1] = rs.getString("nombreProducto");
+                productov[2] = rs.getFloat("precioUnitario");
+                productov[3] = rs.getInt("cantidadProducto");
+                productov[4] = rs.getDate("fechaVencimiento");
+                productov[5] = rs.getFloat("Total");
                 
-                modelo.addRow(tblejercicio);
+                modelo.addRow(productov);
             }
-            Tabla.setModel(modelo);
+            Tabla2.setModel(modelo);
         }catch(Exception e){
         }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tabla;
+    private javax.swing.JTable Tabla2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
